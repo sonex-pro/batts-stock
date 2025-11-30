@@ -1,11 +1,15 @@
 // Reusable Navbar Component
 function createNavbar(activePage = '') {
+    // Detect if we're in a subdirectory or root
+    const isInSubdirectory = window.location.pathname.includes('/pages/');
+    const imagePath = isInSubdirectory ? '../all-images/batts-waterfront.webp' : 'all-images/batts-waterfront.webp';
+    
     const navbarHTML = `
         <nav class="navbar">
             <div class="nav-container">
                 <!-- Logo on left -->
                 <div class="nav-logo-container">
-                    <img src="../all-images/batts-waterfront.webp" alt="Batts Table Tennis Logo" class="nav-logo-img">
+                    <img src="${imagePath}" alt="Batts Table Tennis Logo" class="nav-logo-img">
                 </div>
                 
                 <!-- Business name centered -->
@@ -21,13 +25,13 @@ function createNavbar(activePage = '') {
                 <!-- Navigation menu -->
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Home</a>
+                        <a href="${isInSubdirectory ? '../index.html' : 'index.html'}" class="nav-link ${activePage === 'home' ? 'active' : ''}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contact.html" class="nav-link ${activePage === 'contact' ? 'active' : ''}">Contact Us</a>
+                        <a href="${isInSubdirectory ? 'contact.html' : 'pages/contact.html'}" class="nav-link ${activePage === 'contact' ? 'active' : ''}">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="location.html" class="nav-link ${activePage === 'location' ? 'active' : ''}">Our Location</a>
+                        <a href="${isInSubdirectory ? 'location.html' : 'pages/location.html'}" class="nav-link ${activePage === 'location' ? 'active' : ''}">Our Location</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://www.battsharlow.com/" class="nav-link" target="_blank" rel="noopener noreferrer">Batts Website</a>
