@@ -1,0 +1,276 @@
+/* 
+RUBBERS PAGE CSS - MOBILE FIRST DESIGN
+To edit colors: Change the color values in the :root section below
+To edit fonts: Change the font-family values
+To edit spacing: Modify padding and margin values
+To edit product grid: Modify the grid properties in .products section
+*/
+
+:root {
+    /* COLORS - Edit these to change the site's color scheme */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #ddd;
+}
+
+/* RESET AND BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+}
+
+/* HEADER STYLES */
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+}
+
+.logo {
+    /* To change business name size: Modify font-size below */
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    /* To change tagline size: Modify font-size below */
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* NAVIGATION STYLES */
+.nav {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* MAIN CONTENT */
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* PAGE HEADER */
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+}
+
+.page-header h1 {
+    /* To change page title size: Modify font-size below */
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    /* To change page description size: Modify font-size below */
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* PRODUCTS GRID */
+.products {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* PRODUCT CARDS */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    /* To change product images: Replace src in HTML file */
+    width: auto;
+    height: 200px;
+    max-width: 100%;
+    background-color: var(--light-bg);
+    /* Placeholder styling - remove when real images are added */
+    border-bottom: 2px dashed var(--border-color);
+    display: block;
+    margin: 0 auto;
+    padding-top: 0.8rem;
+}
+
+.product-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.product-name {
+    /* To change product name size: Modify font-size below */
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.product-description {
+    /* To change product description size: Modify font-size below */
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.product-price {
+    /* To change price styling: Modify properties below */
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.read-more-btn {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.read-more-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--light-bg);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* MOBILE LANDSCAPE STYLES (576px and up) */
+@media (min-width: 576px) {
+    .product-image {
+        width: auto;
+        height: 165px;
+        max-width: 100%;
+    }
+}
+
+/* TABLET STYLES (768px and up) */
+@media (min-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page-header p {
+        font-size: 1.1rem;
+    }
+    
+    .products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .product-card {
+        flex-direction: column;
+    }
+    
+    .product-image {
+        width: auto;
+        height: 260px;
+        max-width: 100%;
+    }
+}
+
+/* DESKTOP STYLES (1024px and up) */
+@media (min-width: 1024px) {
+    .main {
+        padding: 2rem;
+    }
+    
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .product-image {
+        width: auto;
+        height: 286px;
+        max-width: 100%;
+    }
+    
+    .product-info {
+        padding: 1.25rem;
+    }
+}
+
+/* LARGE DESKTOP STYLES (1200px and up) */
+@media (min-width: 1200px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

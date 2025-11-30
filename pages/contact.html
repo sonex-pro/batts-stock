@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Batts Table Tennis Supplies</title>
+    
+    <!-- REQUIRED: Include your main CSS file with color variables -->
+    <link rel="stylesheet" href="../styles/index.css">
+    
+    <!-- REQUIRED: Include the navigation component CSS -->
+    <link rel="stylesheet" href="../styles/navbar.css">
+    
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <style type="text/css">
+      .contact-container { 
+        margin-top: 20px;
+        height: calc(100vh - 160px); /* Account for navbar and footer */
+        overflow: hidden; 
+      }
+      .contact-iframe { 
+        width: 100%; 
+        height: 100%; 
+        border: 0; 
+      }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION COMPONENT -->
+    <div id="navbar-container"></div>
+
+    <!-- Contact form content -->
+    <main class="main">
+        <div class="contact-container">
+            <iframe data-tally-src="https://tally.so/r/nrLJgM?transparentBackground=1" class="contact-iframe" frameborder="0" marginheight="0" marginwidth="0" title="BATTS-SHOP Enquiry Form"></iframe>
+        </div>
+    </main>
+
+    <!-- FOOTER COMPONENT -->
+    <div id="footer-container"></div>
+
+    <!-- REQUIRED: Include the navigation component JavaScript -->
+    <script src="../components/navbar-component.js"></script>
+    <!-- REQUIRED: Include the footer component JavaScript -->
+    <script src="../components/footer-component.js"></script>
+</body>
+</html>

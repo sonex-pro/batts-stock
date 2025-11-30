@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Table Tennis Bats - Batts Table Tennis Supplies</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/bats.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+</head>
+<body>
+    <!-- NAVIGATION COMPONENT -->
+    <div id="navbar-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <!-- PAGE TITLE -->
+        <section class="page-header">
+            <h1>Complete Table Tennis Bats</h1>
+            <p>Ready-to-play bats assembled by experts with premium rubbers and blades</p>
+        </section>
+
+        <!-- PRODUCTS GRID -->
+        <section class="products">
+            
+            <!-- PRODUCT 1 - Tibhar Carbon Attack -->
+            <div class="product-card">
+                <img src="../all-images/complete-bats-images/carbon-bat.webp" alt="Tibhar Carbon Attack" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Tibhar Carbon Attack</h3>
+                    <p class="product-description">Professional carbon blade with premium rubbers for advanced players</p>
+                    <p class="product-price">£144.99</p>
+                    <button class="read-more-btn" data-product-index="0">Read More</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2 - Chila Spin Attack -->
+            <div class="product-card">
+                <img src="../all-images/complete-bats-images/chila-bat.webp" alt="Chila Spin Attack" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Chila Spin Attack</h3>
+                    <p class="product-description">High-spin bat perfect for attacking play with excellent control</p>
+                    <p class="product-price">£99.99</p>
+                    <button class="read-more-btn" data-product-index="1">Read More</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 3 - Bribar Winning Loop -->
+            <div class="product-card">
+                <img src="../all-images/complete-bats-images/bribar-loop-bat.webp" alt="Bribar Winning Loop" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Bribar Winning Loop</h3>
+                    <p class="product-description">Versatile bat ideal for loop shots and all-round play</p>
+                    <p class="product-price">£37.99</p>
+                    <button class="read-more-btn" data-product-index="2">Read More</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 4 - Yinhe Sunray -->
+            <div class="product-card">
+                <img src="../all-images/complete-bats-images/yinhe-bat.webp" alt="Yinhe Sunray" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Yinhe Sunray</h3>
+                    <p class="product-description">Entry-level bat with good balance of speed and control</p>
+                    <p class="product-price">£19.99</p>
+                    <button class="read-more-btn" data-product-index="3">Read More</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Modal will be created automatically by universal-modal.js -->
+
+    <!-- FOOTER COMPONENT -->
+    <div id="footer-container"></div>
+
+    <script src="../components/navbar-component.js"></script>
+    <script src="../components/footer-component.js"></script>
+    <script src="../scripts/universal-modal.js"></script>
+    
+    <script>
+        // Initialize the universal modal for bats
+        initializeModal('bat');
+    </script>
+</body>
+</html>
