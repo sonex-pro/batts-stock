@@ -648,8 +648,7 @@ Available with flared handle.`
         // Show colors and thickness only for rubbers
         const colorsThicknessHTML = this.productType === 'rubber' ? `
             <div class="modal-product-colors">
-                <span class="modal-colors-label">Colours: ${product.colors}</span><br>
-                <span class="modal-colors-label">Thickness: ${product.thickness}</span>
+                <span class="modal-colors-label">Colours: ${product.colors} | Thickness: ${product.thickness}</span>
             </div>
         ` : '';
         
