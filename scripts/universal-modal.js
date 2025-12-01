@@ -20,6 +20,9 @@ class UniversalProductModal {
         this.isDragging = false;
         this.modalElement = null;
         this.overlayElement = null;
+        this.isScrolling = false;
+        this.scrollStartTime = 0;
+        this.initialScrollTop = 0;
         
         this.init();
     }
@@ -73,6 +76,16 @@ class UniversalProductModal {
         this.modalElement.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
         this.modalElement.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
         this.modalElement.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+        
+        // Scroll event to detect scrolling behavior
+        this.modalElement.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            // Clear scrolling flag after scroll stops
+            clearTimeout(this.scrollTimeout);
+            this.scrollTimeout = setTimeout(() => {
+                this.isScrolling = false;
+            }, 150);
+        }, { passive: true });
 
         // Keyboard events
         document.addEventListener('keydown', (e) => this.handleKeydown(e));
@@ -262,8 +275,56 @@ Available with flared handle.`
 
         // BLADE DESCRIPTIONS - Add new blade descriptions here
         const bladeDescriptions = {
-            // ADD BLADE DESCRIPTIONS HERE
-            // 'Blade Name': { title: 'DISPLAY TITLE', content: 'Description...' }
+            'Tibhar Felix Lebrun Hyper Inner Carbon Table Tennis Blade': {
+                title: 'TIBHAR FELIX LEBRUN HYPER INNER CARBON',
+                content: `The blade Felix Lebrun Hyper Carbon is as extraordinary as its homonym. Developed with the experts from TIBHAR according to the wishes of the young penholder player from France.
+
+The blended fabric of layers of synthetic carbon fibres placed directly around the core veneer provides the high stiffness that a fast-attacking blade requires. This positioning, however, results in a longer and more sensitive contact with the ball, in contrast to the outer layers of fabric.
+
+This blade is perfectly adapted to players who privilege a fast and attacking game. The blade is ideal for a powerful attacking driving and looping game allowing you to both dominate and counter attack your opponent with total confidence and freedom.
+
+Perfect for advanced players seeking maximum power and precision in their offensive game.`
+            },
+            'Tibhar Rapid Carbon Light': {
+                title: 'TIBHAR RAPID CARBON LIGHT',
+                content: `The blade combines the lightness and extraordinary playing sensation of Balsa heart veneers with the power and precision of high-tech carbon fibres.
+
+It is a lightweight blade enabling a good control, even at high speed. Its strengths are fast and powerful strokes close to the table and at half distance away from the table.
+
+Due to the lightweight (75grams) and the two carbon layers, players have the necessary decisiveness close or away from the table to play a brilliant offensive game.
+
+The perfect balance of speed, control, and lightweight design makes this blade ideal for aggressive players who demand both power and precision.`
+            },
+            'Tibhar Chila Offensive': {
+                title: 'TIBHAR CHILA OFFENSIVE',
+                content: `The Tibhar Chila Offense is one of our most popular selling blade. Now offered to you at an unbelievable price.
+
+Extra light and offensive in pace the Chila Offense is used by the former European Champion, Patrick Chila. A real lightweight in terms of grams (75g) but a true heavyweight in performance.
+
+The balsa core and high speed wood plys are bonded using a special gluing process which create a speedy weapon with good feeling.
+
+You won't have to compromise on speed or on ball feeling with the Tibhar Chila Offensive! Perfect for players seeking professional-level performance at an exceptional value.`
+            },
+            'Impact Precise Light': {
+                title: 'IMPACT PRECISE LIGHT',
+                content: `There has been a move towards light blades and the Precise Light is part of the IMPACT PRO range of blades.
+
+A superb allround attacking blade, very light in weight, with excellent feeling and most importantly optimum balance.
+
+'A really good option for a player who has progressed and wants to upgrade from a pre-made bat, to a custom set-up with a higher quality blade, but still wants to maintain high levels of control.'
+
+The Precise Light offers the perfect stepping stone for developing players who want to enhance their game without sacrificing the control they need to continue improving.`
+            },
+            'Impact Pure Allround': {
+                title: 'IMPACT PURE ALLROUND',
+                content: `The Pure Allround forms part of the IMPACT PURE range, combining top quality materials with great styling.
+
+Impact deliberately went for a heavier than normal blade to increase stability and control. Thanks to the perfect balance the blade doesn't feel weighty. The limba outer veneers ensure optimum feel.
+
+'A really good option for a player who has progressed beyond the beginner stage and wants to upgrade from a pre-made bat, to a custom set-up with a higher quality blade, but still wants to maintain high levels of control.'
+
+Ideal for players who value consistency and control while still having the capability for attacking shots when opportunities arise.`
+            }
         };
 
         // ACCESSORY DESCRIPTIONS - Add new accessory descriptions here
@@ -355,12 +416,21 @@ Available with flared handle.`
 
         // BLADE SPECS - Plys, Weight, Speed, Control
         const bladeSpecs = {
-            'Butterfly Timo Boll ALC': { plys: '5+2', weight: '90g', speed: 'Fast', control: 'High' },
-            'Stiga Clipper Wood': { plys: '7', weight: '85g', speed: 'Medium', control: 'Very High' },
-            'Yasaka Sweden Extra': { plys: '5', weight: '88g', speed: 'Fast', control: 'Medium' },
-            'Donic Waldner Senso Carbon': { plys: '5+2', weight: '92g', speed: 'Very Fast', control: 'High' },
-            'Tibhar Stratus Power Wood': { plys: '5', weight: '87g', speed: 'Fast', control: 'Medium' },
-            'Xiom Feeling ZX3': { plys: '5', weight: '86g', speed: 'Medium', control: 'High' }
+            'Tibhar Felix Lebrun Hyper Inner Carbon Table Tennis Blade': { 
+                plys: '5+2', weight: '85g', speed: '93', control: '75' 
+            },
+            'Tibhar Rapid Carbon Light': { 
+                plys: '5+2', weight: '75g', speed: '102', control: '66' 
+            },
+            'Tibhar Chila Offensive': { 
+                plys: '5', weight: '75g', speed: '84', control: '75' 
+            },
+            'Impact Precise Light': { 
+                plys: '5', weight: '75-80g', speed: '72', control: '82' 
+            },
+            'Impact Pure Allround': { 
+                plys: '5', weight: '95g', speed: '60', control: '85' 
+            }
             // ADD MORE BLADE SPECS HERE
         };
 
@@ -547,6 +617,9 @@ Available with flared handle.`
         this.touchStartY = e.touches[0].clientY;
         this.touchStartX = e.touches[0].clientX;
         this.isDragging = false;
+        this.isScrolling = false;
+        this.scrollStartTime = Date.now();
+        this.initialScrollTop = this.modalElement.scrollTop;
     }
 
     handleTouchMove(e) {
@@ -556,31 +629,50 @@ Available with flared handle.`
         const touchX = e.touches[0].clientX;
         const diffY = this.touchStartY - touchY;
         const diffX = this.touchStartX - touchX;
+        const currentScrollTop = this.modalElement.scrollTop;
         
-        if (Math.abs(diffX) > Math.abs(diffY)) {
-            // Horizontal swipe
-            if (Math.abs(diffX) > 50) {
-                this.isDragging = true;
-                if (diffX > 0) {
-                    this.nextProduct();
-                } else {
-                    this.previousProduct();
+        // Check if user is actually scrolling the content
+        if (Math.abs(currentScrollTop - this.initialScrollTop) > 5) {
+            this.isScrolling = true;
+        }
+        
+        // Only process gestures if not actively scrolling
+        if (!this.isScrolling) {
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                // Horizontal swipe for navigation
+                if (Math.abs(diffX) > 80) { // Increased threshold
+                    this.isDragging = true;
+                    if (diffX > 0) {
+                        this.nextProduct();
+                    } else {
+                        this.previousProduct();
+                    }
+                    this.touchStartX = null;
+                    this.touchStartY = null;
                 }
-                this.touchStartX = null;
-                this.touchStartY = null;
-            }
-        } else {
-            // Vertical swipe
-            if (diffY > 100) {
-                this.close();
+            } else {
+                // Vertical swipe to close - much stricter criteria
+                const swipeTime = Date.now() - this.scrollStartTime;
+                const isAtTop = this.modalElement.scrollTop <= 10;
+                const isFastSwipe = swipeTime < 300;
+                const isLongSwipe = diffY > 200; // Much higher threshold
+                
+                // Only close if: at top of modal, fast swipe, and long distance
+                if (isAtTop && isFastSwipe && isLongSwipe) {
+                    this.close();
+                }
             }
         }
     }
 
     handleTouchEnd(e) {
-        this.touchStartY = null;
-        this.touchStartX = null;
-        this.isDragging = false;
+        // Reset touch state after a delay to allow for scroll momentum
+        setTimeout(() => {
+            this.touchStartY = null;
+            this.touchStartX = null;
+            this.isDragging = false;
+            this.isScrolling = false;
+        }, 100);
     }
 
     handleKeydown(e) {
