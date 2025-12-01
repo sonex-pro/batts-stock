@@ -304,7 +304,7 @@ Responsive modal system optimized for mobile users (80% of traffic)
     }
     
     .modal-content {
-        padding: 0 0.8rem 0.8rem; /* Less padding on mobile */
+        padding: 0 3rem 0.8rem; /* Extra side padding to avoid arrows */
     }
     
     .modal-product-description {
@@ -322,10 +322,74 @@ Responsive modal system optimized for mobile users (80% of traffic)
         background: #007bff;
         border-radius: 4px;
     }
+    
+    /* Fix navigation arrows positioning on mobile */
+    .modal-nav {
+        top: 20%; /* Move arrows higher to avoid statistics */
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .modal-nav-prev {
+        left: 0.5rem;
+    }
+    
+    .modal-nav-next {
+        right: 0.5rem;
+    }
 }
 
-/* TABLET STYLES (768px and up) */
-@media (min-width: 768px) {
+/* TABLET PORTRAIT STYLES (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        transform: translate(-50%, -50%) scale(0.9);
+        border-radius: 12px;
+        max-width: 600px;
+        max-height: 80vh;
+        width: 90%;
+    }
+    
+    .modal.active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .modal-drag-handle {
+        display: none;
+    }
+    
+    .modal-product-image {
+        max-width: 300px;
+        max-height: 250px;
+    }
+    
+    .modal-specs-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .modal-actions {
+        position: static;
+        margin-top: 1rem;
+    }
+    
+    .modal-content {
+        padding: 0 4rem 1rem; /* Extra side padding to avoid arrows */
+    }
+    
+    /* Fix navigation arrows positioning on tablet portrait */
+    .modal-nav {
+        top: 25%; /* Move arrows higher to avoid statistics */
+    }
+}
+
+/* TABLET LANDSCAPE AND DESKTOP STYLES (768px and up, landscape or desktop) */
+@media (min-width: 768px) and ((orientation: landscape) or (min-width: 1024px)) {
     .modal {
         position: fixed;
         top: 50%;
