@@ -174,10 +174,59 @@ body {
     text-align: center;
     transition: background-color 0.3s;
     align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    display: inline-block;
 }
 
 .read-more-btn:hover {
     background-color: var(--primary-color);
+}
+
+/* TOP SECTION */
+.top-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.top-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.top-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.top-text h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.top-text p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.top-image {
+    flex-shrink: 0;
+}
+
+.company-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* FOOTER */
@@ -196,7 +245,19 @@ body {
 
 /* MOBILE STYLES (up to 768px) - Navigation styles now in navbar.css */
 @media (max-width: 768px) {
-    /* Mobile styles for other components can go here */
+    .top-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .top-text h2 {
+        font-size: 1.3rem;
+    }
+    
+    .company-logo {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 /* TABLET STYLES (768px and up) - Navigation styles now in navbar.css */

@@ -6,6 +6,7 @@
     <title>Batts Table Tennis Supplies</title>
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/modal.css">
 </head>
 <body>
     <!-- NAVIGATION COMPONENT -->
@@ -14,27 +15,22 @@
     <!-- MAIN CONTENT -->
     <main class="main">
 
-        <!-- PRODUCT CATEGORIES -->
-        <section class="categories">
-            
-            <!-- ABOUT SECTION -->
-            <div class="category-card">
-                <div class="category-info">
-                    <h3>About Batts Table Tennis Supplies</h3>
-                    <p>We proudly supply all our table tennis equipment through Bribar Table Tennis. Our stock items are ready for same-day collection.</p>
-                    
+        <!-- TOP SECTION WITH IMAGE AND TEXT -->
+        <section class="top-section">
+            <div class="top-content">
+                <div class="top-text">
+                    <h2>Batts/Bribar Table Tennis Supplies</h2>
                     <p>For purchases or inquiries, please email Carl at <a href="mailto:carl.johnson.batts@gmail.com">carl.johnson.batts@gmail.com</a>.</p>
-                    <ul>
-                        <li>Free bat assembly (cutting and gluing) with every rubber purchase.</li>
-                        <li>Bat repair and re-rubbering: £5 per side.</li>
-                    </ul>
-                    
-                    <ul>
-                        <li>To browse our stock at BATTS Table Tennis club, please arrange an appointment in advance.</li>
-                        <li>Need something not in stock? We can order directly from Bribar, with delivery in just 2 working days.</li>
-                    </ul>
+                    <button class="read-more-btn" id="about-modal-btn">Read More</button>
+                </div>
+                <div class="top-image">
+                    <img src="../all-images/batts-waterfront.webp" alt="Batts Table Tennis Supplies" class="company-logo">
                 </div>
             </div>
+        </section>
+
+        <!-- PRODUCT CATEGORIES -->
+        <section class="categories">
             
             <!-- RUBBER CATEGORY -->
             <div class="category-card">
@@ -90,10 +86,62 @@
         </section>
     </main>
 
+    <!-- ABOUT MODAL -->
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <button class="modal-close" id="about-modal-close">&times;</button>
+            </div>
+            <div class="modal-content">
+                <h2 class="modal-product-title">About Batts Table Tennis Supplies</h2>
+                <div class="modal-product-description">
+                    <p>We proudly supply all our table tennis equipment through Bribar Table Tennis. Our stock items are ready for same-day collection.</p>
+                    <p>For purchases or inquiries, please email Carl at <a href="mailto:carl.johnson.batts@gmail.com">carl.johnson.batts@gmail.com</a>.</p>
+                    <p><strong>Services:</strong></p>
+                    <ul>
+                        <li>Free bat assembly (cutting and gluing) with every rubber purchase.</li>
+                        <li>Bat repair and re-rubbering: £5 per side.</li>
+                    </ul>
+                    <p><strong>Ordering & Collection:</strong></p>
+                    <ul>
+                        <li>To browse our stock at BATTS Table Tennis club, please arrange an appointment in advance.</li>
+                        <li>Need something not in stock? We can order directly from Bribar, with delivery in just 2 working days.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER COMPONENT -->
     <div id="footer-container"></div>
 
     <script src="../components/navbar-component.js"></script>
     <script src="../components/footer-component.js"></script>
+    
+    <script>
+        // About Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutBtn = document.getElementById('about-modal-btn');
+            const aboutModal = document.getElementById('about-modal');
+            const aboutClose = document.getElementById('about-modal-close');
+            
+            aboutBtn.addEventListener('click', function() {
+                aboutModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            aboutClose.addEventListener('click', function() {
+                aboutModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            aboutModal.addEventListener('click', function(e) {
+                if (e.target === aboutModal) {
+                    aboutModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
