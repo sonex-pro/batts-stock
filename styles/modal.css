@@ -182,6 +182,20 @@ Responsive modal system optimized for mobile users (80% of traffic)
     border-radius: 8px;
 }
 
+.modal-price-old {
+    font-size: 1rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: normal;
+    margin-right: 0.5rem;
+}
+
+.modal-price-current {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
 .modal-product-colors {
     margin-bottom: 0.5rem;
     text-align: center;

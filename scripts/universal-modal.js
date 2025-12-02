@@ -106,13 +106,34 @@ class UniversalProductModal {
             const img = card.querySelector('.product-image');
             const description = card.querySelector('.product-description');
             const price = card.querySelector('.product-price');
+            const pricing = card.querySelector('.product-pricing');
+            
+            // Handle both old single price format and new pricing structure
+            let priceData = '';
+            let oldPrice = '';
+            let currentPrice = '';
+            
+            if (pricing) {
+                // New pricing structure with old and current prices
+                const oldPriceElement = pricing.querySelector('.price-old');
+                const currentPriceElement = pricing.querySelector('.price-current');
+                oldPrice = oldPriceElement ? oldPriceElement.textContent.trim() : '';
+                currentPrice = currentPriceElement ? currentPriceElement.textContent.trim() : '';
+                priceData = currentPrice; // For backward compatibility
+            } else if (price) {
+                // Old single price format
+                priceData = price.textContent.trim();
+                currentPrice = priceData;
+            }
             
             return {
                 name: name ? name.textContent.trim() : '',
                 image: img ? img.src : '',
                 imageAlt: img ? img.alt : '',
                 description: description ? description.textContent.trim() : '',
-                price: price ? price.textContent.trim() : '',
+                price: priceData,
+                oldPrice: oldPrice,
+                currentPrice: currentPrice,
                 fullDescription: this.getFullProductDescription(name ? name.textContent.trim() : ''),
                 specs: this.getProductSpecs(name ? name.textContent.trim() : ''),
                 colors: this.getProductColors(name ? name.textContent.trim() : ''),
@@ -474,7 +495,7 @@ Ideal for players who value consistency and control while still having the capab
             'Tibhar MX-P': 'Red, Black',
             'Tibhar FX-P': 'Red, Black',
             'Joola Fire': 'Red, Black',
-            'Joola Ice': 'Red, Black',
+            'Joola Ice': 'Red, Black, Blue',
             'Joola Zack': 'Red, Black',
             'Friendship 729': 'Red, Black',
             
@@ -755,7 +776,12 @@ Ideal for players who value consistency and control while still having the capab
                 </div>
             </div>
             
-            <div class="modal-product-price">${product.price}</div>
+            <div class="modal-product-price">
+                ${product.oldPrice ? 
+                    `<span class="modal-price-old">${product.oldPrice}</span> <span class="modal-price-current">${product.currentPrice}</span>` : 
+                    product.price
+                }
+            </div>
             
             ${colorsThicknessHTML}
             
