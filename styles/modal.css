@@ -16,6 +16,9 @@ Responsive modal system optimized for mobile users (80% of traffic)
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     backdrop-filter: blur(2px);
+    /* Ensure modal works on all mobile browsers */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 .modal-overlay.active {
@@ -312,6 +315,27 @@ Responsive modal system optimized for mobile users (80% of traffic)
 
 /* MOBILE-SPECIFIC IMPROVEMENTS */
 @media (max-width: 767px) {
+    .modal-overlay {
+        /* Ensure full coverage on mobile */
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh; /* Use dynamic viewport height for better mobile support */
+    }
+    
+    .modal {
+        /* Ensure modal is properly positioned on mobile */
+        width: 100%;
+        max-height: 90vh;
+        max-height: 90dvh; /* Use dynamic viewport height */
+        /* Ensure modal appears above everything else */
+        z-index: 1001;
+        /* Force hardware acceleration for smoother animations */
+        will-change: transform;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
     .modal-product-image {
         max-height: 150px; /* Even smaller on mobile for more text visibility */
         max-width: 200px;

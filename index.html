@@ -123,22 +123,51 @@
             const aboutModal = document.getElementById('about-modal');
             const aboutClose = document.getElementById('about-modal-close');
             
-            aboutBtn.addEventListener('click', function() {
+            aboutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 aboutModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                // Ensure modal is visible on mobile
+                setTimeout(() => {
+                    aboutModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             });
             
-            aboutClose.addEventListener('click', function() {
-                aboutModal.classList.remove('active');
-                document.body.style.overflow = '';
+            aboutClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeModal();
             });
             
             aboutModal.addEventListener('click', function(e) {
                 if (e.target === aboutModal) {
-                    aboutModal.classList.remove('active');
-                    document.body.style.overflow = '';
+                    closeModal();
                 }
             });
+            
+            // Function to properly close modal
+            function closeModal() {
+                aboutModal.classList.remove('active');
+                document.body.style.overflow = '';
+                // Reset any mobile-specific styles
+                document.body.style.position = '';
+                document.body.style.top = '';
+            }
+            
+            // Add touch event handling for mobile
+            let touchStartY = 0;
+            aboutModal.addEventListener('touchstart', function(e) {
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+            
+            aboutModal.addEventListener('touchmove', function(e) {
+                const touchY = e.touches[0].clientY;
+                const touchDiff = touchStartY - touchY;
+                
+                // If swiping down on modal overlay (not content), close modal
+                if (e.target === aboutModal && touchDiff < -50) {
+                    closeModal();
+                }
+            }, { passive: true });
         });
     </script>
 </body>
