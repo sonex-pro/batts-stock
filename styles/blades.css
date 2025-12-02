@@ -186,16 +186,16 @@ body {
 }
 
 .price-old {
-    font-size: 1rem;
-    color: #999;
-    text-decoration: line-through;
-    font-weight: normal;
+    font-size: 1rem !important;
+    color: #999 !important;
+    text-decoration: line-through !important;
+    font-weight: normal !important;
 }
 
 .price-current {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--accent-color);
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+    color: var(--accent-color) !important;
 }
 
 .read-more-btn {

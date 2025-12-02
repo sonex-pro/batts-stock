@@ -183,17 +183,17 @@ Responsive modal system optimized for mobile users (80% of traffic)
 }
 
 .modal-price-old {
-    font-size: 1rem;
-    color: #999;
-    text-decoration: line-through;
-    font-weight: normal;
+    font-size: 1rem !important;
+    color: #999 !important;
+    text-decoration: line-through !important;
+    font-weight: normal !important;
     margin-right: 0.5rem;
 }
 
 .modal-price-current {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--accent-color);
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    color: var(--accent-color) !important;
 }
 
 .modal-product-colors {
