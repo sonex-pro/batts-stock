@@ -453,8 +453,8 @@ Responsive modal system optimized for mobile users (80% of traffic)
     }
     
     .modal-product-image {
-        max-width: 450px;
-        max-height: 350px;
+        max-width: 200px;
+        max-height: 180px;
     }
     
     .modal-specs-grid {
