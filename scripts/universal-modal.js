@@ -435,22 +435,22 @@ Ideal for players who value consistency and control while still having the capab
             // ADD MORE BAT SPECS HERE
         };
 
-        // BLADE SPECS - Plys, Weight, Speed, Control
+        // BLADE SPECS - Plys, Weight, Speed, Control, Handle
         const bladeSpecs = {
             'Tibhar Felix Lebrun Hyper Inner Carbon Table Tennis Blade': { 
-                plys: '5+2', weight: '85g', speed: '93', control: '75' 
+                plys: '5', weight: '75g', speed: '84', control: '75', handle: 'Flare' 
             },
             'Tibhar Rapid Carbon Light': { 
-                plys: '5+2', weight: '75g', speed: '102', control: '66' 
+                plys: '5', weight: '75g', speed: '84', control: '75', handle: 'Flare' 
             },
             'Tibhar Chila Offensive': { 
-                plys: '5', weight: '75g', speed: '84', control: '75' 
+                plys: '5', weight: '75g', speed: '84', control: '75', handle: 'Flare' 
             },
             'Impact Precise Light': { 
-                plys: '5', weight: '75-80g', speed: '72', control: '82' 
+                plys: '5', weight: '75g', speed: '84', control: '75', handle: 'Flare' 
             },
             'Impact Pure Allround': { 
-                plys: '5', weight: '95g', speed: '60', control: '85' 
+                plys: '5', weight: '75g', speed: '84', control: '75', handle: 'Flare' 
             }
             // ADD MORE BLADE SPECS HERE
         };
@@ -474,7 +474,7 @@ Ideal for players who value consistency and control while still having the capab
         const defaultSpecs = {
             rubber: { speed: 'N/A', spin: 'N/A', control: 'N/A', strategy: 'N/A', hardness: 'N/A' },
             bat: { rubbers: 'N/A', strategy: 'N/A', plys: 'N/A', handle: 'N/A' },
-            blade: { plys: 'N/A', weight: 'N/A', speed: 'N/A', control: 'N/A' },
+            blade: { plys: 'N/A', weight: 'N/A', speed: 'N/A', control: 'N/A', handle: 'N/A' },
             accessory: { type: 'N/A', material: 'N/A', size: 'N/A' }
         };
 
@@ -608,6 +608,10 @@ Ideal for players who value consistency and control while still having the capab
                     <div class="modal-spec-item">
                         <span class="modal-spec-label">CONTROL:</span>
                         <span class="modal-spec-value">${specs.control}</span>
+                    </div>
+                    <div class="modal-spec-item">
+                        <span class="modal-spec-label">HANDLE:</span>
+                        <span class="modal-spec-value">${specs.handle}</span>
                     </div>
                 `;
                 break;

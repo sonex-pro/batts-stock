@@ -274,3 +274,11 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* MODAL NAVIGATION ARROW POSITIONING FIX FOR BATS */
+/* Fix navigation arrows positioning on desktop to avoid covering statistics */
+@media (min-width: 1024px) {
+    .modal-nav {
+        top: 10%; /* Move arrows to top 20% of modal to avoid statistics */
+    }
+}

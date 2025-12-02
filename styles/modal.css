@@ -461,6 +461,16 @@ Responsive modal system optimized for mobile users (80% of traffic)
         grid-template-columns: repeat(5, 1fr);
         gap: 0.75rem;
     }
+    
+    /* Fix navigation arrows positioning on desktop to avoid covering statistics */
+    .modal-nav {
+        top: 15%; /* Move arrows to top 15% of modal for better spacing */
+        transform: translateY(0); /* Remove center transform */
+    }
+    
+    .modal-nav:hover {
+        transform: scale(1.1); /* Remove translateY from hover */
+    }
 }
 
 
