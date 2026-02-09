@@ -203,9 +203,7 @@ body {
 .services-section {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background-color:#f0f8ff;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    background-color: transparent;
 }
 
 .services-content {
@@ -235,8 +233,8 @@ body {
 }
 
 .service-image {
-    width: 112px;
-    height: 112px;
+    width: 168px;
+    height: 168px;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -270,8 +268,8 @@ body {
     }
     
     .service-image {
-        width: 84px;
-        height: 84px;
+        width: 126px;
+        height: 126px;
     }
 }
 
