@@ -41,6 +41,10 @@ body {
     padding: 1rem;
 }
 
+h1 {
+    color: var(--secondary-color);
+}
+
 .main > p {
     margin-bottom: 10px;
 }
@@ -270,7 +274,7 @@ body {
     .service-image {
         width: 100%;
         height: auto;
-        max-width: 300px;
+        max-width: 500px;
         margin: 0 auto;
     }
 }
